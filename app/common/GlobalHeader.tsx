@@ -14,9 +14,9 @@ const GlobalHeader: React.FC = () => {
                   <Image className="logo1" src={logo1} alt="Aima Logo" />
                 </Link>
 
-                <a href="#">
+                <Link href={"/"}>
                   <Image className="logo2" src={logo2} alt="MAT Logo" />
-                </a>
+                </Link>
               </div>
             </div>
 
@@ -25,13 +25,11 @@ const GlobalHeader: React.FC = () => {
               aria-label="Primary navigation"
               className="menubar hidden md:flex items-center gap-[15px]"
             >
-              <a href="#" className="nav-link">
-                TEST DATES
-              </a>
+              <Link href={"/Testdate"}>TEST DATES</Link>
 
-              <a href="#" className="nav-link">
+              <Link href={"/TestCities"} className="nav-link">
                 TEST CITIES
-              </a>
+              </Link>
 
               <div className="relative group">
                 <button className="nav-link flex items-center gap-1">
@@ -53,33 +51,41 @@ const GlobalHeader: React.FC = () => {
 
                 <div
                   className="
-                                            absolute left-0 mt-5 w-58   bg-white shadow-lg  
-                                            opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                                            transition-all duration-200 z-20
-                                        "
+                    absolute left-0 mt-5 w-58   bg-white shadow-lg  
+                    opacity-0 invisible group-hover:opacity-100 group-hover:visible
+                    transition-all duration-200 z-20
+                "
                 >
-                  <a href="#" className="  dropdown-menu">
+                  <Link
+                    href={"/Participating-B-School"}
+                    className=" dropdown-menu"
+                  >
                     Participating B-Schools
-                  </a>
+                  </Link>
 
-                  <a href="#" className="  dropdown-menu">
+                  <Link
+                    href={"/B-SchoolNotification"}
+                    className=" dropdown-menu"
+                  >
                     B-School Notifications
-                  </a>
+                  </Link>
                 </div>
               </div>
-
-              <a href="#" className="nav-link">
-                REGISTRATION PROCESS
-              </a>
-              <a href="#" className="nav-link">
+              <Link href={"/Testimonial"} className="nav-link">
                 Testimonials
-              </a>
+              </Link>
+              <Link href={"/Registration-process"} className="nav-link">
+                REGISTRATION PROCESS
+              </Link>
             </nav>
 
             <div className="hidden md:flex items-center gap-3">
-              <a className="btn-primary">Login</a>
-
-              <a className="btn-outline">Sign Up</a>
+              <Link href={"/"} className="btn-primary">
+                Login
+              </Link>
+              <Link href={"/"} className="btn-outline">
+                Sign Up
+              </Link>
             </div>
           </div>
         </div>

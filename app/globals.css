@@ -213,3 +213,17 @@ img {
 .even-odd-table tr:nth-child(even) {
   background-color: #ffffff;
 }
+
+.decription-content-details ul {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.decription-content-details ul li {
+  list-style: disc !important;
+  padding-left: 10px !important;
+}
+
+.decription-content-details ul li:last-of-type {
+  margin-bottom: 20px;
+}

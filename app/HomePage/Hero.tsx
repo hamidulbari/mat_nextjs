@@ -1,8 +1,32 @@
 import Image from "next/image";
 import heroImg from "../../public/images/hero-img.webp";
+import Marquee from "react-fast-marquee";
 const Hero: React.FC = () => {
   return (
     <>
+      <section className="bg-[var(--primary-color)] py-2 text-white">
+        <div className="max-w-6xl  mx-auto">
+          <Marquee pauseOnHover speed={30}>
+            MAT February 2026 registrations are open | 200+ Participating
+            B-Schools | 2 Test modes: Paper Based Test (PBT) & Computer Based
+            Test (CBT) | 66 Test Cities | Avail concession in registration fee
+            by applying for both test modes, PBT + CBT | Recent Additions:
+            Acharya Bangalore B-School, Jain University (Bengaluru), Amrita
+            School of Business (Coimbatore), PSG Institute of Management
+            (Coimbatore), Shiv Nadar University (Chennai), XIME (Kochi), GITAM
+            School of Business (Hyderabad), NIT Jalandhar, New Delhi Institute
+            of Management, Delhi School of Business (VIPS-TC), BIMTECH (Greater
+            Noida), IMS Ghaziabad, Jaipuria Institute of Management (Noida),
+            Bharati Vidyapeeth (Deemed to be University – Navi Mumbai), IIEBM-
+            Indus Business School (Pune), Dr D Y Patil B School (Pune), Gujarat
+            Maritime University (Gandhinagar), ITM Vocational University
+            (Vadodara), Manipal University (Jaipur), National Academy of Defense
+            Production (NADP - Nagpur), NIT Silchar, Dibrugarh University, NERIM
+            Group of Institutions (Guwahati), St. Xaviers University (Kolkata),
+            Sikkim Manipal Institute of Technology (Sikkim Manipal University)
+          </Marquee>
+        </div>
+      </section>
       <section className="section-spacing">
         <div className="max-w-6xl mx-auto ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[20px]  md:gap-[50px]">
