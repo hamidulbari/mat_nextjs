@@ -1,108 +1,27 @@
-import { useMemo } from "react";
-const PaymentOption: React.FC = () => {
-  const citiesPBT = [
-    "Aizawl",
-    "Bengaluru",
-    "Bhilai",
-    "Chennai",
-    "Coimbatore",
-    "Cuttack",
-    "Delhi",
-    "Dibrugarh",
-    "Durgapur",
-    "Ernakulam - Kochi",
-    "Gandhinagar",
-    "Guwahati",
-    "Gwalior",
-    "Gurugram",
-    "Hyderabad",
-    "Jabalpur",
-    "Jaipur",
-    "Kanpur",
-    "Kolkata",
-    "Kottayam",
-    "Lucknow",
-    "Madurai",
-    "Mangaluru",
-    "Mumbai",
-    "Nashik",
-    "Noida",
-    "Patna",
-    "Prayagraj",
-    "Pune",
-    "Ranchi",
-    "Silchar",
-    "Surat",
-    "Thiruvananthapuram",
-    "Tiruchirappali (Trichy)",
-    "Varanasi",
-    "Visakhapatnam",
-  ];
+interface PaymentOptionProps {
+  pbtCities?: string[];
+  pbtTestDate?: string;
+  cbtCities?: string[];
+  cbtTestDate?: string;
+}
 
-  const citiesCBT = [
-    "Ahmedabad",
-    "Agra",
-    "Asansol",
-    "Bareilly",
-    "Belagavi (Belgaum)",
-    "Bengaluru",
-    "Bhopal",
-    "Bhubaneswar",
-    "Chandigarh",
-    "Chennai",
-    "Coimbatore",
-    "Dehradun",
-    "Delhi",
-    "Ernakulam - Kochi",
-    "Faridabad",
-    "Ghaziabad",
-    "Greater Noida",
-    "Guwahati",
-    "Gurugram",
-    "Hubballi (Hubli)",
-    "Hyderabad",
-    "Indore",
-    "Jaipur",
-    "Jalandhar",
-    "Jorhat",
-    "Jammu",
-    "Kozhikode",
-    "Kolkata",
-    "Lucknow",
-    "Madurai",
-    "Mangaluru",
-    "Meerut",
-    "Mumbai",
-    "Mysuru (Mysore)",
-    "Nagpur",
-    "Navi Mumbai",
-    "Noida",
-    "Panjim",
-    "Patna",
-    "Pune",
-    "Raipur",
-    "Ranchi",
-    "Rourkela",
-    "Salem",
-    "Shillong",
-    "Shimla",
-    "Siliguri",
-    "Thiruvananthapuram",
-    "Thrissur",
-    "Udaipur",
-    "Vadodara",
-    "Vellore",
-    "Vijayawada",
-  ];
+const PaymentOption: React.FC<PaymentOptionProps> = ({
+  pbtCities,
+  pbtTestDate,
+  cbtCities,
+  cbtTestDate,
+}) => {
 
-  const sortedCitiesPBT = useMemo(
-    () => citiesPBT.toSorted((a, b) => a.localeCompare(b)),
-    [citiesPBT],
-  );
-  const sortedCitiesCBT = useMemo(
-    () => citiesCBT.toSorted((a, b) => a.localeCompare(b)),
-    [citiesCBT],
-  );
+  const activeCitiesPBT = pbtCities;
+  const activeCitiesCBT = cbtCities;
+
+  const displayPbtDate = pbtTestDate || "31st May 2026";
+  const displayCbtDate = cbtTestDate || "31st May 2026";
+
+  const sortedCitiesPBT = activeCitiesPBT?.toSorted((a, b) => a.localeCompare(b))
+
+  const sortedCitiesCBT = activeCitiesCBT?.toSorted((a, b) => a.localeCompare(b))
+
 
   return (
     <>
@@ -125,12 +44,12 @@ const PaymentOption: React.FC = () => {
                 <div className="item !text-end">
                   <p className=" !mb-0">Paper Based Test</p>
                   <p className=" !mb-0">
-                    <strong> Test Date:</strong> 31st May 2026
+                    <strong> Test Date:</strong> {displayPbtDate}
                   </p>
                 </div>
               </div>
               <div className="list-wrapper flex flex-row flex-wrap gap-2 mt-5">
-                {sortedCitiesPBT.map((city) => (
+                {sortedCitiesPBT?.map((city) => (
                   <div
                     key={city}
                     className="item-name bg-[#FFFFFF24] text-white px-4 py-1 rounded hover:bg-white hover:text-[var(--primary-color)] transition-all duration-300 cursor-pointer"
@@ -149,12 +68,12 @@ const PaymentOption: React.FC = () => {
                 <div className="item !text-end">
                   <p className=" !mb-0">Computer Based Test</p>
                   <p className=" !mb-0">
-                    <strong> Test Date:</strong> 31st May 2026
+                    <strong> Test Date:</strong> {displayCbtDate}
                   </p>
                 </div>
               </div>
               <div className="list-wrapper flex flex-row flex-wrap gap-2 mt-5">
-                {sortedCitiesCBT.map((city) => (
+                {sortedCitiesCBT?.map((city) => (
                   <div
                     key={city}
                     className="item-name bg-[#FFFFFF24] text-white px-4 py-1 rounded hover:bg-white hover:text-[var(--primary-color)] transition-all duration-300 cursor-pointer"

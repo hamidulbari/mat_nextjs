@@ -2,8 +2,13 @@
 import { useState } from "react";
 import { FaChevronUp } from "react-icons/fa6";
 
-const ZoneWiseCity: React.FC = () => {
-  const CBTzones = [
+interface ZoneWiseCityProps {
+  initialCbtData?: { title: string; cities: string[] }[];
+  initialPbtData?: { title: string; cities: string[] }[];
+}
+
+const ZoneWiseCity: React.FC<ZoneWiseCityProps> = ({ initialCbtData, initialPbtData }) => {
+  const CBTzones = initialCbtData || [
     {
       title: "East Zone",
       cities: [
@@ -80,7 +85,7 @@ const ZoneWiseCity: React.FC = () => {
     },
   ];
 
-  const PBTzones = [
+  const PBTzones = initialPbtData || [
     {
       title: "East Zone",
       cities: [
@@ -178,16 +183,22 @@ const ZoneWiseCity: React.FC = () => {
 
                     {open && (
                       <div className="p-4">
-                        <div className="flex flex-wrap gap-2.5">
-                          {item.cities.map((city) => (
-                            <span
-                              key={city}
-                              className="rounded bg-[var(--border-color)] px-4 py-1 text-[var(--primary-color)]"
-                            >
-                              {city}
-                            </span>
-                          ))}
-                        </div>
+                        {!item.cities || item.cities.length === 0 ? (
+                          <div className="text-gray-500 text-sm font-medium py-1">
+                            No Data Available
+                          </div>
+                        ) : (
+                          <div className="flex flex-wrap gap-2.5">
+                            {item.cities.map((city) => (
+                              <span
+                                key={city}
+                                className="rounded bg-[var(--border-color)] px-4 py-1 text-[var(--primary-color)]"
+                              >
+                                {city}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
@@ -228,16 +239,22 @@ const ZoneWiseCity: React.FC = () => {
 
                     {open && (
                       <div className="p-4">
-                        <div className="flex flex-wrap gap-2.5">
-                          {item.cities.map((city) => (
-                            <span
-                              key={city}
-                              className="rounded bg-[var(--border-color)] px-4 py-1 text-[var(--primary-color)]"
-                            >
-                              {city}
-                            </span>
-                          ))}
-                        </div>
+                        {!item.cities || item.cities.length === 0 ? (
+                          <div className="text-gray-500 text-sm font-medium py-1">
+                            No Data Available
+                          </div>
+                        ) : (
+                          <div className="flex flex-wrap gap-2.5">
+                            {item.cities.map((city) => (
+                              <span
+                                key={city}
+                                className="rounded bg-[var(--border-color)] px-4 py-1 text-[var(--primary-color)]"
+                              >
+                                {city}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>

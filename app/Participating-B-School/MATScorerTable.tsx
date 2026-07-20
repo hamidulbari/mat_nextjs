@@ -74,10 +74,23 @@ const zoneData: Record<
   ],
 };
 
+interface BSchoolTableData {
+  code: string;
+  institute: string;
+  website: string;
+  city: string;
+}
+
+interface MATScorerTableProps {
+  initialData?: Record<Zone, BSchoolTableData[]>;
+}
+
 /* ---------------- MAIN COMPONENT ---------------- */
 
-const MATScorerTable = () => {
+const MATScorerTable: React.FC<MATScorerTableProps> = ({ initialData }) => {
   const [activeTab, setActiveTab] = useState<Zone>("NORTH");
+
+  const currentData = initialData ? initialData[activeTab] : zoneData[activeTab];
 
   return (
     <>
@@ -96,7 +109,7 @@ const MATScorerTable = () => {
 
       {/* CONTENT */}
       <div className="bg-white shadow-sm border border-[var(--border-color)] rounded-lg p-4 overflow-x-auto">
-        <Table data={zoneData[activeTab]} />
+        <Table data={currentData} />
       </div>
     </>
   );
@@ -128,26 +141,34 @@ function Table({
       </thead>
 
       <tbody>
-        {data.map((row) => (
-          <tr
-            key={row.code}
-            className="border-b border-[var(--border-color)] hover:bg-gray-50 transition"
-          >
-            <td className="p-3">{row.code}</td>
-            <td className="p-3">{row.institute}</td>
-            <td className="p-3 primary-color">
-              <a
-                href={`https://${row.website}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="primary-color hover:underline"
-              >
-                {row.website}
-              </a>
+        {!data || data.length === 0 ? (
+          <tr>
+            <td colSpan={4} className="p-8 text-center text-gray-500 font-medium">
+              No Data Available
             </td>
-            <td className="p-3">{row.city}</td>
           </tr>
-        ))}
+        ) : (
+          data.map((row) => (
+            <tr
+              key={row.code}
+              className="border-b border-[var(--border-color)] hover:bg-gray-50 transition"
+            >
+              <td className="p-3">{row.code}</td>
+              <td className="p-3">{row.institute}</td>
+              <td className="p-3 primary-color">
+                <a
+                  href={`https://${row.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="primary-color hover:underline"
+                >
+                  {row.website}
+                </a>
+              </td>
+              <td className="p-3">{row.city}</td>
+            </tr>
+          ))
+        )}
       </tbody>
     </table>
   );
